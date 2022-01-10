@@ -1,0 +1,33 @@
+<% layout ('/layouts/boilerplate') %>
+    <h1>All Activities</h1>
+    <div>
+        <a href="/todolist/new" class="btn btn-outline-primary">Add An Activity</a>
+    </div>
+    <table class="table">
+        <thead>
+            <tr>
+                <th scope="col">Activities</th>
+            </tr>
+        </thead>
+        <tbody>
+            <% for (let activity of activities) {%>
+                <% if( currentUser && activity.author.equals(currentUser._id)) {%>
+                    <tr>
+                        <th scope="row">
+                            <p>
+                                <%= activity.activity %>
+                            </p>
+                        </th>
+                        <td>
+                            <a class="btn btn-primary" href="/todolist/<%= activity._id %>/edit">Edit</a>
+                        </td>
+                        <td>
+                            <form action="/todolist/<%= activity._id %>?_method=DELETE" method="POST">
+                                <button class="btn btn-success">Completed</button>
+                            </form>
+                        </td>
+                    </tr>
+                    <% } %>
+                        <% } %>
+        </tbody>
+    </table>

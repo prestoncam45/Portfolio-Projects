@@ -1,0 +1,18 @@
+<% layout ('/layouts/boilerplate') %>
+    <div class="row">
+        <h1 class="text-center">Activities Show</h1>
+        <div class="col-6 offset-3">
+            <h2>
+                <%= activity.activity %>
+            </h2>
+            <footer>
+                <p><a class="btn btn-primary" href="/todolist/<%= activity._id %>/edit">Edit</a></p>
+                <p>
+                <form action="/todolist/<%= activity._id %>?_method=DELETE" method="POST">
+                    <button class="btn btn-danger">Delete</button>
+                </form>
+                </p>
+                <a href="/todolist">To Do List</a>
+            </footer>
+        </div>
+    </div>
